@@ -21,7 +21,7 @@ def validate_customer(shop_name: str, shopify_order: "Order"):
 			"customer_email": customer.email,
 			"customer_first_name": customer.first_name,
 			"customer_last_name": customer.last_name,
-			"customer_phone": customer.phone
+			"customer_phone": customer.phone,
 		}
 	)
 
