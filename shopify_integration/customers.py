@@ -14,9 +14,11 @@ if TYPE_CHECKING:
 def validate_customer(shop_name: str, shopify_order: "Order"):
 	customer = shopify_order.attributes.get("customer", frappe._dict())
 
-	frappe.logger("frappe.log").info({
-		"customer": json.dumps(customer, indent=1),
-	})
+	frappe.logger("frappe.log").info(
+    	{
+			"customer": json.dumps(customer, indent=1),
+		}
+    )
 
 	if customer.id and not frappe.db.get_value(
 		"Customer", {"shopify_customer_id": customer.id}, "name"
