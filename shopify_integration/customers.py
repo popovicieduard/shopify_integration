@@ -16,8 +16,8 @@ def validate_customer(shop_name: str, shopify_order: "Order"):
 
 	frappe.logger("frappe.log").info(
 		{
- 			"customer": json.dumps(customer, indent=1),
- 		}
+			"customer": json.dumps(customer, indent=1),
+		}
 	)
 
 	if customer.id and not frappe.db.get_value(
