@@ -18,10 +18,9 @@ def validate_customer(shop_name: str, shopify_order: "Order"):
 	frappe.logger("frappe").info(
 		{
 			"customer_id": customer.id,
-			"customer_email": customer.email,
+			"attributes": customer.__str__(),
 			"customer_first_name": customer.first_name,
 			"customer_last_name": customer.last_name,
-			"customer_phone": customer.phone,
 		}
 	)
 
