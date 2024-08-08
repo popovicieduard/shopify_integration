@@ -15,13 +15,6 @@ if TYPE_CHECKING:
 def validate_customer(shop_name: str, shopify_order: "Order"):
 	customer = shopify_order.attributes.get("customer", frappe._dict())
 
-	frappe.logger("frappe").info(
-		{
-			"customer_id": customer.id,
-			"attributes": customer.__str__(),
-		}
-	)
-
 	if customer.id and not frappe.db.get_value(
 		"Customer", {"shopify_customer_id": customer.id}, "name"
 	):
@@ -36,7 +29,7 @@ def create_customer(shop_name: str, shopify_customer: "ShopifyCustomer"):
 		last_name = cstr(shopify_customer.last_name)
 		cust_name = f"{first_name} {last_name}"
 	else:
-		cust_name = shopify_customer.attributes.get("email") or f"CUST_NAME_{shopify_customer.id}"
+		cust_name = shopify_customer.attributes.get("email") or shopify_customer.id
 
 	try:
 		customer: "Customer" = frappe.get_doc(
