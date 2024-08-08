@@ -19,8 +19,6 @@ def validate_customer(shop_name: str, shopify_order: "Order"):
 		{
 			"customer_id": customer.id,
 			"attributes": customer.__str__(),
-			"customer_first_name": customer.first_name,
-			"customer_last_name": customer.last_name,
 		}
 	)
 
